@@ -54,4 +54,19 @@ def MC_autocall(S0, barrier, yield_rate, n, m, r, sigma, T):
     payoffs = autocall_payoff(S0, barrier, yield_rate, n, m, r, sigma, T)  # Calculate payoffs for each path
     return np.mean(payoffs) * np.exp(-r * T)  # Discount payoffs to present value and calculate average
 
+def MC_confidence(S0, barrier, yield_rate, n, m, r, sigma, T):
+    """
+    Give some information about the monte carlo estimator (standard dev, confidence interval, error)
+    """
+    payoffs = autocall_payoff(S0, barrier, yield_rate, n, m, r, sigma, T) 
+    p=np.mean(payoffs) * np.exp(-r * T) 
+    s=np.std(payoffs*np.exp(-r*T))
+    print("Estimator:",p)
+    print("Standard deviation:",s/np.sqrt(n)) 
+    print("Condidence interval 95%:",[p-1.96*s/np.sqrt(n),p+1.96*s/np.sqrt(n)]) #Confidence interval of level 95%
+    print("Error:",100*1.96*s/(p*np.sqrt(n)),"%")
+
+
+    
+
 
