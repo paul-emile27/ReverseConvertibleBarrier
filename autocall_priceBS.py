@@ -19,7 +19,7 @@ def Observation(n, m, S0, r, sigma, T):
     Obs = np.zeros((n, m + 1))  # +1 to include the initial price
     # Fill the matrix
     for i in range(n):
-        # Generate each path with random fluctuations
+        # Generate each path with random fluctuations (based on Euler-Scheme but adapted to observation dates) 
         path = S0 * np.cumprod(1 + r * T/m + sigma * np.sqrt(T/m) * np.random.randn(m))
         # Insert the initial price at the beginning of each path
         Obs[i, :] = np.concatenate(([S0], path))
