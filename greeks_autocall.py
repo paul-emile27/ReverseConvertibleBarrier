@@ -12,11 +12,11 @@ yield_rate = 0.06  # Coupon yield rate
 barrier = 0.8  # Barrier level as a percentage of the initial level
 
 
-def delta(x, barrier, yield_rate, n, m, r, sigma, T, steps, epsilon=0.01):
-    return (MC_autocall(x+epsilon, barrier, yield_rate, n, m, r, sigma, T) - MC_autocall(x-epsilon, barrier, yield_rate, n, m, r, sigma, T))/(2*espilon)
+def delta(S0, barrier, yield_rate, n, m, r, sigma, T, steps, epsilon=0.01):
+    return (MC_autocall(S0+epsilon, barrier, yield_rate, n, m, r, sigma, T) - MC_autocall(S0-epsilon, barrier, yield_rate, n, m, r, sigma, T))/(2*espilon)
 
 def gamma(x, barrier, yield_rate, n, m, r, sigma, T, steps, epsilon=0.01):
-    return (MC_autocall(x+epsilon, barrier, yield_rate, n, m, r, sigma, T) - 2*MC_autocall(x, barrier, yield_rate, n, m, r, sigma, T) + MC_autocall(x-epsilon, barrier, yield_rate, n, m, r, sigma, T))/(espilon**2)
+    return (MC_autocall(S0+epsilon, barrier, yield_rate, n, m, r, sigma, T) - 2*MC_autocall(S0, barrier, yield_rate, n, m, r, sigma, T) + MC_autocall(S0-epsilon, barrier, yield_rate, n, m, r, sigma, T))/(espilon**2)
 
 def rho(r, S0, barrier, yield_rate, n, m, sigma, T, steps, epsilon=0.002):
     return (MC_autocall(S0, barrier, yield_rate, n, m, r+epsilon, sigma, T) - MC_autocall(S0, barrier, yield_rate, n, m, r-epsilon, sigma, T))/(2*espilon)
