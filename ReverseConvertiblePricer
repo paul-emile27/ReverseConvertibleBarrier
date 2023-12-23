@@ -1,0 +1,35 @@
+import numpy as np 
+
+
+r, sigma, X0, K, T, H = 0, 0.2, 100, 100, 1, 50
+n = 10**5
+
+C=0.1
+
+#reverse convertible = short down and in put + guaranted coupon 
+# payoff reverse convertible= -(K-S_T)+*indatrice(min(St)<=H) + C 
+
+#Payoff is short DI Put and Coupono always 
+#Barrier usually 50-80% of strike 
+#K is the strike of put 
+#C is the coupon receive usually 6%
+
+def Euler_X(m):
+    return np.concatenate((np.array([X0]), X0*np.cumprod(1 + r*T/m + sigma*np.sqrt(T/m)*np.random.randn(m))))
+
+
+def MC(m=100,n=10**5):
+    
+    X = np.array([Euler_X(m) for i in range(n)])
+    
+    min_X = np.min(X, axis=1)
+    payoff_arr = -(np.maximum(K- X[:, -1] , 0) * (min_X < H)) + C*X0
+
+    estimator = np.mean(payoff_arr*np.exp(-r*T))
+    std_error = np.std(payoff_arr) / np.sqrt(n)
+    return estimator, std_error
+
+estim_1, std_error_1 = MC()
+print("Estimator for m = 100 : ", estim_1)
+print("Confidence interval for m = 100 : [", estim_1 - 1.96*std_error_1, " ; ", estim_1 + 1.96*std_error_1, "].")
+
