@@ -7,7 +7,7 @@ X0 : initial stock price
 T : maturity date
 n : number of simulation 
 m : step in Euler scheme
-A reverse convertible can be seen as a short down an in put (barrier option) and a guaranteed coupon received at maturity.
+A reverse convertible can be seen as a short down and in put (barrier option) and a guaranteed coupon received at maturity.
 """
 
 r,sigma,X0,T,n,m = 0 , 0.2 , 100 , 1 , 10**6 , 1000 
