@@ -1,8 +1,8 @@
-# AutocallPricer
-Pricing of an autocall - Projet 2 of Aymeric Kalife - w/ Ismael Bendib
+#ReverseConvertibleBarrierPricer
+Pricing of a reverse convertible barrier  - Projet 2 of Aymeric Kalife - w/ Ismael Bendib
 
-The goal of this project is to price an Athéna Autocallable with monte carlo simulations and compute its greeks. 
+The goal of this project is to price a RBC with monte carlo simulations and compute its greeks. 
 
-We will try one approach with Black-Scholes then one approach with a more sophisticated model : Heston model. 
+We will try one approach with Black-Scholes model then one approach with a more sophisticated model : Heston model. 
 
 
