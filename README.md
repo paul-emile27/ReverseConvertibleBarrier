@@ -1,5 +1,5 @@
 #ReverseConvertibleBarrierPricer
-Pricing of a reverse convertible barrier  - Projet 2 of Aymeric Kalife - w/ Ismael Bendib
+Pricing of a reverse convertible barrier  - Project 2 of Practice of Structured Products - w/ Ismael Bendib
 
 The goal of this project is to price a RBC with monte carlo simulations and compute its greeks. 
 
